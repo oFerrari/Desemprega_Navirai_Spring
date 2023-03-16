@@ -1,5 +1,4 @@
 package br.edu.ifms.matricula;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 import org.springframework.boot.SpringApplication;
