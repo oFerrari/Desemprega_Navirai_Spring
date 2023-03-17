@@ -2,6 +2,7 @@ package br.edu.ifms.matricula.model.dto;
 
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,8 @@ public class EstudanteDto {
 	@Id												/*Identificador da CLASSE*/		
 	@GeneratedValue(strategy = GenerationType.AUTO)		/*ID SERA UM VALOR GERADO*/
 	private UUID id;
+	
+	@Column(nullable = false)						/*NotNull*/
 	private String nome;
 	private String cpf;
 	private String email;
