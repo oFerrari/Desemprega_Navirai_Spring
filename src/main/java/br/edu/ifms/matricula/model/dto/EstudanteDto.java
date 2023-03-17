@@ -9,15 +9,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity			/*Informando que sera um registro de tabela	*/						
-@Table(name = "tb_estudante")  		/*Nome da Tabela*/
+
 
 public class EstudanteDto {
-	@Id												/*Identificador da CLASSE*/		
-	@GeneratedValue(strategy = GenerationType.AUTO)		/*ID SERA UM VALOR GERADO*/
-	private UUID id;
-	
-	@Column(nullable = false)						/*NotNull*/
+	private UUID id;				
 	private String nome;
 	private String cpf;
 	private String email;

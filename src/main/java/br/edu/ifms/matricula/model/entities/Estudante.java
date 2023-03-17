@@ -2,11 +2,32 @@ package br.edu.ifms.matricula.model.entities;
 
 import java.util.UUID;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
+@Entity			/*Informando que sera um registro de tabela	*/						
+@Table(name = "tb_estudante")  		/*Nome da Tabela*/
 public class Estudante {
+
+	@Id												/*Identificador da CLASSE*/		
+	@GeneratedValue(strategy = GenerationType.AUTO)		/*ID SERA UM VALOR GERADO*/
 	private UUID id;
+	
+	@Column(nullable = false,length = 80)						/*NotNull*/
 	private String nome;
+	
+	@Column(nullable = false,length = 11)
 	private String cpf;
+	
+	@Column(nullable = false,length = 50)
 	private String email;
+	
+	@Column(nullable = false,length = 50)
 	private String senha;
 	
 	
