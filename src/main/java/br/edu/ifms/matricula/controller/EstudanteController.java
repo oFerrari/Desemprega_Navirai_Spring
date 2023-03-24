@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifms.matricula.controller.dto.EstudanteRequest;
 import br.edu.ifms.matricula.controller.dto.EstudanteResponse;
+import br.edu.ifms.matricula.controller.mapper.EstudanteMapper;
+import br.edu.ifms.matricula.model.dto.EstudanteDto;
+import br.edu.ifms.matricula.model.services.EstudanteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -38,6 +41,11 @@ public class EstudanteController {
 
 	@PostMapping
 	public ResponseEntity<EstudanteResponse> create(@RequestBody EstudanteRequest estudanteRequest) {
+		@RequestBody EstudanteRequest estudanteRequest){
+			
+			EstudanteDto estudanteDto = EstudanteMapper.requestToDto(estudanteRequest);
+			EstudanteDto estudanteDto2 = EstudanteService.create(estudanteDto);
+		
 		EstudanteResponse estudante = new EstudanteResponse();
 		estudante.setNome("Andreii");
 		estudante.setCpf("232.238.174-38");
@@ -52,3 +60,4 @@ public class EstudanteController {
 		return ResponseEntity.ok(estudante);
 	}
 }
+	}
