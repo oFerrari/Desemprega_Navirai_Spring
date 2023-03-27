@@ -15,49 +15,44 @@ import br.edu.ifms.matricula.controller.mapper.EstudanteMapper;
 import br.edu.ifms.matricula.model.dto.EstudanteDto;
 import br.edu.ifms.matricula.model.services.EstudanteService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/estudante")
-@Tag(name = "Aluno", description = "Gerenciamento de Estudantes")
+@Tag(name = "Estudante", description = "Gerenciamento de estudantes")
 public class EstudanteController {
-	@GetMapping()
-	public ResponseEntity<String> olaMundo() {
-		return ResponseEntity.ok("Ola Mundo");
+	
+	private final EstudanteService estudanteService;
+	
+	public EstudanteController(EstudanteService estudanteService) {
+		this.estudanteService = estudanteService;
+	}
+	
+	@GetMapping
+	public ResponseEntity<String> olamundo() {
+		return ResponseEntity.ok("Ola mundo");
 	}
 	
 	@Operation(summary = "Novo recurso", description = "Serviço para cadastrar um recurso")
-	  @ApiResponses(value = {
-	      @ApiResponse(responseCode = "200", description = "Operação de sucesso",
-	          content = @Content(mediaType = "application/json", schema = @Schema(implementation = EstudanteResponse.class))),
-	      @ApiResponse(responseCode = "500", description = "Falha no serviço", content = @Content)
-	  })
-
-//	https://reqbin.com/
-
+	@ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Operação de sucesso",
+          content = @Content(mediaType = "application/json",
+          schema = @Schema(implementation = EstudanteResponse.class))),
+      @ApiResponse(responseCode = "500", description = "Falha no serviço", content = @Content)
+	})
 	@PostMapping
-	public ResponseEntity<EstudanteResponse> create(@RequestBody EstudanteRequest estudanteRequest) {
-		@RequestBody EstudanteRequest estudanteRequest){
-			
-			EstudanteDto estudanteDto = EstudanteMapper.requestToDto(estudanteRequest);
-			EstudanteDto estudanteDto2 = EstudanteService.create(estudanteDto);
+	public ResponseEntity<EstudanteResponse> create(
+			@RequestBody EstudanteRequest estudanteRequest ) {
 		
-		EstudanteResponse estudante = new EstudanteResponse();
-		estudante.setNome("Andreii");
-		estudante.setCpf("232.238.174-38");
-		estudante.setEmail("andrei@gmail.com");
-
-		estudante.setNome(estudanteRequest.getNome());
-		estudante.setCpf(estudanteRequest.getCpf());
-		estudante.setEmail(estudanteRequest.getEmail());
-
-		estudante.setId(UUID.randomUUID());
-
-		return ResponseEntity.ok(estudante);
+		EstudanteDto estudanteDto = EstudanteMapper.requestToDto(estudanteRequest);
+		EstudanteDto estudanteDto2 = estudanteService.create(estudanteDto);
+		
+		EstudanteResponse estudanteResponse = EstudanteMapper.dtoToResponse(estudanteDto2);
+		return ResponseEntity.ok(estudanteResponse);
 	}
+
 }
-	}

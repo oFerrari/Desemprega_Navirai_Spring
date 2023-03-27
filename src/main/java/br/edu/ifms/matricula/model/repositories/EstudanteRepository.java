@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import br.edu.ifms.matricula.model.entities.Estudante;
 
-//CREATE TABLE E INSERTS AUTOMATICOS
 @Repository
-public interface EstudanteRepository extends JpaRepository<Estudante, UUID>{
-	
-}	
+public interface EstudanteRepository
+extends JpaRepository<Estudante, UUID> {
+
+}

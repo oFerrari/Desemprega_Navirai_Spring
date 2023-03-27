@@ -9,27 +9,25 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
-@Entity			/*Informando que sera um registro de tabela	*/						
-@Table(name = "tb_estudante")  		/*Nome da Tabela*/
+@Entity
+@Table(name = "TB_ESTUDANTE")
 public class Estudante {
-
-	@Id												/*Identificador da CLASSE*/		
-	@GeneratedValue(strategy = GenerationType.AUTO)		/*ID SERA UM VALOR GERADO*/
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 	
-	@Column(nullable = false,length = 80)						/*NotNull*/
+	@Column(nullable = false, length = 80)
 	private String nome;
 	
-	@Column(nullable = false,length = 11)
+	@Column(nullable = false, length = 11)
 	private String cpf;
 	
-	@Column(nullable = false,length = 50)
+	@Column(nullable = false, length = 150)
 	private String email;
 	
-	@Column(nullable = false,length = 50)
+	@Column(nullable = false, length = 50)
 	private String senha;
-	
 	
 	public UUID getId() {
 		return id;
@@ -63,4 +61,5 @@ public class Estudante {
 	}
 	
 	
+
 }

@@ -2,22 +2,13 @@ package br.edu.ifms.matricula.model.dto;
 
 import java.util.UUID;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-
-
 public class EstudanteDto {
-	private UUID id;				
+	
+	private UUID id;
 	private String nome;
 	private String cpf;
 	private String email;
 	private String senha;
-	
 	
 	public UUID getId() {
 		return id;
@@ -50,4 +41,6 @@ public class EstudanteDto {
 		this.senha = senha;
 	}
 	
+	
+
 }
