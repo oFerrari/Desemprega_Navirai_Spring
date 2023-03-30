@@ -10,5 +10,8 @@ import br.edu.ifms.matricula.model.entities.Estudante;
 @Repository
 public interface EstudanteRepository
 extends JpaRepository<Estudante, UUID> {
-
+	Boolean existsByEmail(String email);
+	Boolean existsByCpf(String cpf);
+	
+	Boolean existsByCpfOrEmail(String cpf,String email);
 }

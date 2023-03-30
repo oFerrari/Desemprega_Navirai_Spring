@@ -18,9 +18,23 @@ public class EstudanteService {
 	}
 
 	public EstudanteDto create(EstudanteDto estudanteDto) {
+		
 		estudanteDto.setNome( estudanteDto.getNome().toUpperCase() );
 		estudanteDto.setEmail( estudanteDto.getEmail().toLowerCase() );
 		estudanteDto.setSenha( MD5.encode(estudanteDto.getSenha()) );
+		
+		if(repository.existsByCpf(estudanteDto.getCpf())) {
+			throw new RuntimeException("CPF ja existe para  outro estudante");
+		}
+		if(repository.existsByEmail(estudanteDto.getEmail())) {
+			throw new RuntimeException("Email ja existe para  outro  estudante");
+		}
+//		if(repository.existsByCpfOrEmail(estudanteDto.getEmail(), estudanteDto.getEmail())) {
+//			throw new RuntimeException("CPF ou Email ja existe para outro estudante");
+//		}
+		
+		
+		
 		
 		Estudante estudante = EstudanteMapper.dtoToEntity(estudanteDto);
 		repository.save(estudante);
