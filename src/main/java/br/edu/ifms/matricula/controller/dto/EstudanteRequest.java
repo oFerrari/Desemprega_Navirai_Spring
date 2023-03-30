@@ -10,7 +10,7 @@ public class EstudanteRequest {
 	private String nome;
 	
 	@NotBlank
-	@Size(min = 11)
+	@Size(min = 11, max = 11)
 	private String cpf;
 	
 	@Size(max = 150, message = "Informe um endereço de e-mail")

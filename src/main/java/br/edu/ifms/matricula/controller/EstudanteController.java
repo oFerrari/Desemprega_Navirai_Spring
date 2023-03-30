@@ -20,6 +20,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/estudante")
@@ -46,7 +47,7 @@ public class EstudanteController {
 	})
 	@PostMapping
 	public ResponseEntity<EstudanteResponse> create(
-			@RequestBody EstudanteRequest estudanteRequest ) {
+			@RequestBody @Valid EstudanteRequest estudanteRequest ) {
 		
 		EstudanteDto estudanteDto = EstudanteMapper.requestToDto(estudanteRequest);
 		EstudanteDto estudanteDto2 = estudanteService.create(estudanteDto);
