@@ -9,10 +9,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.edu.ifms</groupId>
-	<artifactId>matricula</artifactId>
+	<artifactId>Desemprega_Navirai_Spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>matricula</name>
-	<description>Sistema para Matricula</description>
+	<name>Desemprega_Navirai_Spring</name>
+	<description>Sistema para Vagas de Emprego Navirai</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
