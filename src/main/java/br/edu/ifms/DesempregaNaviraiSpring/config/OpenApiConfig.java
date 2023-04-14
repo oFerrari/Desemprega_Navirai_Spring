@@ -15,8 +15,8 @@ public class OpenApiConfig {
 	public OpenAPI springShopOpenAPI() {
 		return new OpenAPI()
 				.info(new Info()
-						.title("API de estudantes")
-						.description("A descricao da sua API")
+						.title("API de Emprego")
+						.description("Sistema para Vagas de Emprego Navirai")
 						.version("v0.0.1")
 						.license(new License().name("Apache 2.0").url("http://springdoc.org")))
 				.externalDocs(new ExternalDocumentation()
